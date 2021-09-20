@@ -1,7 +1,13 @@
-FROM python
+FROM node
 
-WORKDIR /pythonapp
+WORKDIR /node-app
+
+COPY /package.json .
+
+RUN npm install
 
 COPY . .
 
-CMD ["python", "bmi.py"]
+EXPOSE 3000
+
+CMD ["node", "server.js"]
